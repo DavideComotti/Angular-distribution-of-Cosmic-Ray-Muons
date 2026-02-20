@@ -1,7 +1,5 @@
 # Angular-distribution-of-Cosmic-Ray-Muons
 
-# Study of the Angular Distribution of Cosmic Ray Muons
-
 ## Overview
 
 This repository contains the complete experimental and computational analysis developed for my Bachelor Thesis in Mechanical Engineering at the University of Brescia.
@@ -39,19 +37,7 @@ The EcoMug source code was obtained from its official GitHub repository and inte
 
 ## Experimental vs Theoretical Comparison
 
-The simulated and measured angular distributions were compared through:
-
-- Histogram normalization
-- Shape analysis
-- Statistical consistency evaluation
-
-The agreement between simulation and experimental data confirms:
-
-- Correct detector modeling
-- Validity of angular transformation
-- Consistency with expected atmospheric muon behavior
-
----
+The results do not completely overlap but this is not necessarily attributable to error in the data. EcoMug is a parametric muon generator based on data collected more than 20 years ago; furthermore, the data obtained by the detectors have never been validated and published on a scientific journal. Nevertheless, the future continuation of this work is fundamental to study new data for a longer period of time and therefore evaluate the validity of the model 
 
 ## Repository Structure
 
@@ -95,13 +81,14 @@ pip install -r requirements.txt
 
 Run notebooks sequentially:
 
-01_root_to_csv_conversion.ipynb  
-02_data_cleaning_and_merging.ipynb  
-03_angular_transformation.ipynb  
-04_angular_distribution_analysis.ipynb  
-05_temporal_heatmap_analysis.ipynb  
-06_ecomug_simulation.ipynb  
-07_experimental_vs_simulation_comparison.ipynb  
+01_Read_root_dataset_to_csv.ipynb
+02_Data_merging.ipynb
+03_Data_cleaning.ipynb
+04_Angular_distribution_analysis.ipynb
+05_Heatmap_SuperLayer.ipynb
+06_Heatmap_DriftTube.ipynb
+07_EcoMug_TestSuite_Open.ipynb
+08_EcoMug_TestSuite_Distribution.ipynb
 
 ---
 
@@ -117,11 +104,16 @@ It demonstrates:
 - C++ / Python interoperability
 - Statistical analysis and visualization
 
----
-
 ## Author
 
 Bachelor Thesis – Mechanical Engineering  
 University of Brescia  
 
 Author: Davide Comotti
+
+## References
+
+EcoMug – Efficient COsmic MUon Generator  
+GitHub repository: https://github.com/dr4kan/EcoMug
+
+EcoMug is an open-source Monte Carlo generator used to simulate atmospheric muon flux distributions.
