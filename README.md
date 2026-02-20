@@ -22,77 +22,20 @@ The project integrates:
 The data were collected using a cosmic ray muon detector at the INFN's Legnaro facility. 
 Detector events were stored in ROOT format, the standard data format used in high-energy physics. The various ROOT files, which were obtained from a public dataset provided by INFN Legnaro and hosted by CERN, were opened using 'uproot'. Then, only the data regarding the study were extrapolated, that is, the angular coefficient of the incident CR muon, regarding both detector (Super Layer and Drift Tube) and both the directions (horizontal and vertical). The elements of every file were merged into a single file which was cleaned from null values and ordered by timestamp.
 
-## Angular Transformation
+## Angular Transformation and Statistical Analysis
 
-Detector measurements were converted into zenith angles within:
-
-0° ≤ θ ≤ 90°
-
-This transformation enabled direct comparison with theoretical muon flux models.
-
-The expected theoretical dependence follows:
-
-I(θ) ∝ cosⁿ(θ)
-
-where n ≈ 2 for atmospheric muons at ground level.
-
----
-
-## Statistical Analysis
-
-- Histogram construction using `matplotlib`
-- Angular binning
-- Distribution normalization
-- Parameter estimation via curve fitting
-
-The experimental angular distribution was extracted and characterized statistically.
-
----
+Detector measurements were converted into zenith angles within: 0° ≤ θ ≤ 90°. 
+This transformation allowed the creation of histograms using the library 'matplotlib' which show the number of detected muons for each inclination with respect to the perpendicular to the detector
 
 ## Temporal Analysis
 
-To evaluate detector stability:
-
-- Timestamps converted to datetime format using pandas
-- Event frequency analyzed over time
-- Heatmaps generated to visualize detector activity
-
-This analysis ensured measurement consistency and detector reliability.
-
----
+Starting from the merged files, heatmaps were created to analyze the detector activity throughout the days considered for this study. To create the heatmaps, timestamps were converted to datetime format using pandas.This analysis ensured measurement consistency and detector reliability.
 
 ## Theoretical Modeling and Monte Carlo Simulation
 
-To validate experimental results, theoretical simulations were performed using:
+To compare experimental results with theoretical predictions, Monte Carlo simulations were performed using EcoMug (Efficient COsmic MUon Generator), an open-source cosmic muon generator.
 
-:contentReference[oaicite:2]{index=2}  
-(Efficient COsmic MUon Generator)
-
-EcoMug is a C++-based cosmic muon generator designed for realistic atmospheric muon simulations.
-
----
-
-### C++ to Python Integration
-
-The original C++ implementation of EcoMug was integrated into the Python workflow using:
-
-- `cppyy` for C++–Python interoperability
-- Python-controlled simulation loops
-- Detector geometry emulation
-
-This enabled seamless integration between Monte Carlo simulation and experimental analysis.
-
----
-
-### Monte Carlo Procedure
-
-1. Generation of atmospheric muon samples
-2. Simulation of muon cascades
-3. Emulation of detector acceptance
-4. Extraction of simulated zenith angle distributions
-5. Histogram generation for theoretical comparison
-
----
+The EcoMug source code was obtained from its official GitHub repository and integrated into the Python analysis pipeline using cppyy for C++ interoperability. From the GitHub repository of EcoMug was used TestSuite too which was integrated too. TestSuite allowed to simulate the presence of a detector (where the user can decide both the size and the orientation of the detector as well as the source type between flat-sky and hemisphere) and a CR muon's cascade. The muons that hit the detector are saved in a .txt file. These files were then used to create histograms of the angular distribution of muons.
 
 ## Experimental vs Theoretical Comparison
 
@@ -137,14 +80,10 @@ requirements.txt
 - NumPy
 - Pandas
 - Matplotlib
-- SciPy
 - uproot
-- seaborn
 - cppyy
 - Jupyter Notebook
 - C++
-
----
 
 ## Reproducibility
 
