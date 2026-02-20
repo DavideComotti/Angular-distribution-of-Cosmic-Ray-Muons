@@ -2,10 +2,6 @@
 
 # Study of the Angular Distribution of Cosmic Ray Muons
 
-
-::contentReference[oaicite:0]{index=0}
-
-
 ## Overview
 
 This repository contains the complete experimental and computational analysis developed for my Bachelor Thesis in Mechanical Engineering at the University of Brescia.
@@ -21,39 +17,10 @@ The project integrates:
 - Detector acceptance simulation
 - Statistical comparison between theory and experiment
 
----
-
 ## Experimental Data Source
 
-The data were collected using a cosmic ray muon detector at the  
-:contentReference[oaicite:1]{index=1}.
-
-Detector events were stored in ROOT format, the standard data format used in high-energy physics.
-
-Approximately 20 ROOT files were processed and merged into a unified dataset for analysis.
-
----
-
-## Data Processing Pipeline
-
-### 1. ROOT File Conversion
-
-- ROOT files opened using `uproot`
-- Conversion to pandas DataFrames
-- Export to intermediate CSV format
-
-### 2. Data Cleaning
-
-- Timestamp-based filtering to remove invalid measurements
-- Selection of physically meaningful events
-- Export of cleaned datasets
-
-### 3. Dataset Merging
-
-- All cleaned CSV files merged into a single global dataset
-- Consistency checks performed across runs
-
----
+The data were collected using a cosmic ray muon detector at the INFN's Legnaro facility. 
+Detector events were stored in ROOT format, the standard data format used in high-energy physics. The various ROOT files, which were obtained from a public dataset provided by INFN Legnaro and hosted by CERN, were opened using 'uproot'. Then, only the data regarding the study were extrapolated, that is, the angular coefficient of the incident CR muon, regarding both detector (Super Layer and Drift Tube) and both the directions (horizontal and vertical). The elements of every file were merged into a single file which was cleaned from null values and ordered by timestamp.
 
 ## Angular Transformation
 
